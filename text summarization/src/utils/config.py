@@ -39,13 +39,17 @@ test_x_seg_path = os.path.join(root, 'data', 'test_X_seg_data.csv')
 train_x_pad_path = os.path.join(root, 'data', 'train_X_pad_data.csv')
 train_y_pad_path = os.path.join(root, 'data', 'train_Y_pad_data.csv')
 test_x_pad_path = os.path.join(root, 'data', 'test_X_pad_data.csv')
-test_y_pad_path = os.path.join(root, 'data', 'test_Y_pad_data.csv')
+# test_y_pad_path = os.path.join(root, 'data', 'test_Y_pad_data.csv')
+val_x_pad_path = os.path.join(root, 'data', 'val_X_pad_data.csv')
+val_y_pad_path = os.path.join(root, 'data', 'val_Y_pad_data.csv')
 
 # 3. numpy 转换后的数据
 train_x_path = os.path.join(root, 'data', 'train_X')
 train_y_path = os.path.join(root, 'data', 'train_Y')
 test_x_path = os.path.join(root, 'data', 'test_X')
-test_y_path = os.path.join(root, 'data', 'test_Y')
+# test_y_path = os.path.join(root, 'data', 'test_Y')
+val_x_path = os.path.join(root, 'data', 'val_X')
+val_y_path = os.path.join(root, 'data', 'val_Y')
 
 # 词向量路径
 save_wv_model_path = os.path.join(root, 'data', 'wv', 'word2vec.model')

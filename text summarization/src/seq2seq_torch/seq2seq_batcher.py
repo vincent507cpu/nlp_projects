@@ -8,25 +8,23 @@ from src.utils.data_loader import load_dataset
 from torch.utils.data import TensorDataset, DataLoader
 import torch
 from src.utils import config
+from sklearn.model_selection import train_test_split
 
 def train_batch_generator(batch_size, max_enc_len=200, max_dec_len=50, sample_sum=None):
     # 加载数据集
     train_X, train_y = load_dataset(config.train_x_path, config.train_y_path,
                                     max_enc_len, max_dec_len)
-    val_X, val_y = load_dataset(config.test_x_path, config.test_y_path,
-                                max_enc_len, max_dec_len)
-    print(f'total {len(train_Y)} examples ...')
+    # val_X, val_y = load_dataset(config.val_x_path, config.val_y_path,
+    #                             max_enc_len, max_dec_len)
+    train_X, val_X, train_y, val_y = train_test_split(train_X, train_y, train_size=0.8)
+
+    print(f'total {len(train_y)} examples ...')
     if sample_sum:
         train_X = train_X[:sample_sum]
         train_y = train_y[:sample_sum]
-    # train_dataset = tf.data.Dataset.from_tensor_slices((train_X, train_Y)).shuffle(len(train_X),
-    #                                                                                reshuffle_each_iteration=True)
-    # val_dataset = tf.data.Dataset.from_tensor_slices((val_X, val_Y)).shuffle(len(val_X),
-    #                                                                          reshuffle_each_iteration=True)
-    # train_dataset = train_dataset.batch(batch_size, drop_remainder=True)
-    # val_dataset = val_dataset.batch(batch_size, drop_remainder=True)
-    train_dataset = TensorDataset((train_X, train_y))
-    val_dataset = TensorDataset((val_X, val_y))
+
+    train_dataset = TensorDataset(train_X, train_y)
+    val_dataset = TensorDataset(val_X, val_y)
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, drop_last=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, drop_last=True)
     train_steps_per_epoch = len(train_X) // batch_size

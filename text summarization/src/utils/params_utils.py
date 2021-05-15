@@ -48,11 +48,12 @@ def get_params():
                         help="beam size for beam search decoding (must be equal to batch size in decode mode)",
                         type=int)
     parser.add_argument("--embed_size", default=300, help="Words embeddings dimension", type=int)
-    parser.add_argument("--enc_units", default=400, help="Encoder GRU cell units number", type=int)
-    parser.add_argument("--dec_units", default=400, help="Decoder GRU cell units number", type=int)
-    parser.add_argument("--attn_units", default=400, help="[context vector, decoder state, decoder input] feedforward \
-                                result dimension - this result is used to compute the attention weights",
-                        type=int)
+    # parser.add_argument("--enc_units", default=400, help="Encoder GRU cell units number", type=int)
+    # parser.add_argument("--dec_units", default=400, help="Decoder GRU cell units number", type=int)
+    # parser.add_argument("--attn_units", default=400, help="[context vector, decoder state, decoder input] feedforward \
+    #                             result dimension - this result is used to compute the attention weights",
+                        # type=int)
+    parser.add_argument('--hidden_dim', default=400, help='hidden units number', type=int)
     parser.add_argument("--train_seg_x_dir", default=train_x_seg_path, help="train_seg_x_dir", type=str)
     parser.add_argument("--train_seg_y_dir", default=train_y_seg_path, help="train_seg_y_dir", type=str)
     parser.add_argument("--test_seg_x_dir", default=test_x_seg_path, help="train_seg_x_dir", type=str)

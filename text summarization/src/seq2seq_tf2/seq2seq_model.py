@@ -2,6 +2,9 @@
 # Created by LuoJie at 12/7/19
 import tensorflow as tf
 
+import sys
+sys.path.append('/Users/wenjiazhai/Documents/GitHub/nlp_projects/text summarization')
+
 from src.seq2seq_tf2.model_layers import Encoder, BahdanauAttention, Decoder
 from src.utils.gpu_utils import config_gpu
 from src.utils.params_utils import get_params
@@ -49,7 +52,7 @@ class Seq2Seq(tf.keras.Model):
 
 if __name__ == '__main__':
     # GPU资源配置
-    config_gpu()
+    # config_gpu()
     # 获得参数
     params = get_params()
     # 读取vocab训练
